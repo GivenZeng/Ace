@@ -1,5 +1,7 @@
 package com.allen.mapdemo;
 
+import com.allen.arguments.Arguments;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;

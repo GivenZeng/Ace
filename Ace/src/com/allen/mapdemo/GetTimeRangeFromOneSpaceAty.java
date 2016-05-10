@@ -1,5 +1,7 @@
 package com.allen.mapdemo;
 
+import com.allen.arguments.Arguments;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
