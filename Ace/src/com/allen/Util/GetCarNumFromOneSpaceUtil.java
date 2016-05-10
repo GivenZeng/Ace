@@ -32,7 +32,8 @@ public class GetCarNumFromOneSpaceUtil {
     		final String secondPointLatitude=arguments[3];
     		final String firstPointLongitude=arguments[4];
     		final String secondPointLongitude=arguments[5];
-    	 final List<String> list=new ArrayList<String>();
+    		
+    	    final List<String> list=new ArrayList<String>();
     	 new Thread()
     	 {
     		 public void run() 

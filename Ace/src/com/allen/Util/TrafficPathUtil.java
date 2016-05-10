@@ -99,7 +99,6 @@ public class TrafficPathUtil {
 					converter.from(CoordType.GPS);
 					for (int i = 0; i < latlngs.size(); i++) {
 						converter.coord(latlngs.get(i));
-
 						latlngs.set(i, converter.convert());
 					}
 					Log.i("test", "finish convert gps to baidu latlng");

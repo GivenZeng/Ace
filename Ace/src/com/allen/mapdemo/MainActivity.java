@@ -2,6 +2,7 @@ package com.allen.mapdemo;
 
 import java.util.List;
 
+import com.allen.Util.DrawRectangleUtil;
 import com.allen.Util.GetCarNumFromOneSpaceUtil;
 import com.allen.Util.TrafficPathUtil;
 import com.allen.arguments.Arguments;
@@ -25,7 +26,7 @@ public class MainActivity extends Activity {
 	boolean isShowingCarPath = false;
    public MyDialogHandler myHandler=new MyDialogHandler(MainActivity.this);
 	String[] arguments = new String[10];
-
+   public boolean isShowingRectangle=false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,6 +88,16 @@ public class MainActivity extends Activity {
 			////////////////////////////////////////////////////////////////////////////////////
 		case R.id.carNum:
 			getTimeAndLocationRangeInOneSpace();
+			if(isShowingRectangle)
+			{
+				item.setTitle("车数查询");
+				isShowingRectangle=false;
+				DrawRectangleUtil.cancelRectangle();
+			}
+			else{
+				item.setTitle("查询完成");
+				//isShowingRectangle=true;
+			}
 			break;
 			
 		case R.id.trafficStream:
@@ -168,12 +179,18 @@ public class MainActivity extends Activity {
 		{
 			int i=0;
 			Bundle bundle = data.getExtras();
-			arguments[i++]=bundle.getString("firstTime");
-			arguments[i++]=bundle.getString("lastTime");
-			arguments[i++]=bundle.getString("firstLatitude");
-			arguments[i++]=bundle.getString("secondLatitude");
-			arguments[i++]=bundle.getString("firstLongitude");
-			arguments[i++]=bundle.getString("secondLongitude");
+			arguments[i++]=bundle.getString("firstTime");//0
+			arguments[i++]=bundle.getString("lastTime");//1
+			arguments[i++]=bundle.getString("firstLatitude");//2
+			arguments[i++]=bundle.getString("secondLatitude");//3
+			arguments[i++]=bundle.getString("firstLongitude");//4
+			arguments[i++]=bundle.getString("secondLongitude");//5
+			String[] latlngs=new String[]{arguments[2],arguments[4],arguments[3],arguments[5]};
+			if(DrawRectangleUtil.drawRectangle(map, latlngs))
+			{
+				isShowingRectangle=true;
+			}
+			
 			GetCarNumFromOneSpaceUtil.getCarNumBySocket(MainActivity.this, arguments);
 		}
 	}
