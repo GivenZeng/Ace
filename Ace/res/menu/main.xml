@@ -1,0 +1,46 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.allen.mapdemo.MainActivity" >
+
+    <item
+        android:id="@+id/carPath"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="轨迹查询"/>
+  <item
+        android:id="@+id/carNum"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="车数查询"/>
+  
+    <item
+        android:id="@+id/trafficStream"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="车流查询"/>
+    
+  <item android:id="@+id/modeItems"
+      android:title="模式选择" 
+        >
+        
+       <menu>
+           <group android:id="@+id/mapMode"
+           android:checkableBehavior="single">
+              <item android:id="@+id/normallMode"
+          android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="普通模式" ></item>
+               <item android:id="@+id/trafficMode"
+          android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="交通模式" ></item>
+              <item android:id="@+id/satelliteMode"
+          android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="卫星模式" ></item>
+  </group>
+       </menu>
+     
+  </item>
+ 
+</menu>

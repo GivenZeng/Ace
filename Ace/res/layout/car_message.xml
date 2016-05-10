@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:gravity="center"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="50dp"
+    android:background="@drawable/bg3">
+    
+  <LinearLayout 
+        android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="0dp" >
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30px"
+        android:text="汽车编号:">
+        </TextView>
+    <EditText
+        android:id="@+id/carNumEditor"
+          android:textSize="30px"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        ></EditText>
+  </LinearLayout>  
+   
+    <LinearLayout 
+        android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+          android:textSize="30px"
+        android:text="起始时间:">
+        </TextView>
+    <EditText
+            android:hint="y-m-d h-m-s"
+        android:id="@+id/carTimeFirstEidtor"
+          android:textSize="30px"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        ></EditText>
+</LinearLayout>
+
+        <LinearLayout 
+        android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+          android:textSize="30px"
+        android:text="结束时间:">
+        </TextView>
+    <EditText
+            android:hint="y-m-d h-m-s"
+        android:id="@+id/carTimeSecondEidtor"
+          android:textSize="30px"
+        android:layout_width="300px"
+        android:layout_height="wrap_content"
+        ></EditText>
+</LinearLayout>
+
+     <Button  android:id="@+id/okBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="确定"></Button>
+     
+</LinearLayout>
