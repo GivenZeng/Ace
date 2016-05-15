@@ -20,7 +20,7 @@ public class GetTimeRangeFromOneSpaceAty extends Activity {
         protected void onCreate(Bundle savedInstanceState) {
         	// TODO Auto-generated method stub
         	super.onCreate(savedInstanceState);
-        	setContentView(R.layout.get_time_range_from_one_space_layout);
+        	setContentView(R.layout.get_time_range_from_one_spacexml);
         	initViews();
         }
          
@@ -52,6 +52,7 @@ public class GetTimeRangeFromOneSpaceAty extends Activity {
 						bundle.putString("secondLatitude", secondLatitude);
 						bundle.putString("firstLongitude", firstLongitude);
 						bundle.putString("secondLongitude", secondLongitude);
+						bundle.putString(Arguments.FINISH,Arguments.FINISH);
 						intent.putExtras(bundle);
 						setResult(Arguments.GET_TIME_AND_RANGE_FROM_ONE_SPACE, intent);
 						GetTimeRangeFromOneSpaceAty.this.finish();

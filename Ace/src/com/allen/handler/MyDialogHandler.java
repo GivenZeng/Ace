@@ -23,7 +23,7 @@ public class MyDialogHandler extends Handler {
         		 int carnum=msg.arg1;
         		 AlertDialog ad=new AlertDialog.Builder(context).create();
 					ad.setTitle("查询结果");
-					ad.setMessage("一共差得 "+carnum+" 辆车");
+					ad.setMessage("一共查得  "+carnum+" 辆车");
 					ad.setButton(DialogInterface.BUTTON_POSITIVE, "确定",new DialogInterface.OnClickListener() {
 						
 						@Override

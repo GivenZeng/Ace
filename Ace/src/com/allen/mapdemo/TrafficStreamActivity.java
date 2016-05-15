@@ -24,13 +24,7 @@ public class TrafficStreamActivity extends Activity {
 //    	float[] points={0,50,150,300,500,400,500,450,100};
 //        trafficStreamGraph.setPoints(points);
 	}
-    
-    private void manipulate()
-    {
-    	Intent intent=this.getIntent();
-    	String[] messages=null;
-    	
-    }
+
     //获取数据后要调用
     public void setPoints(float[]points)
     {
@@ -59,15 +53,5 @@ public class TrafficStreamActivity extends Activity {
     	return super.onOptionsItemSelected(item);
     	
     }
-    @Override
-    protected void onResume() {
-    	// TODO Auto-generated method stub
-    	super.onResume();
-    }
-    
-    @Override
-    protected void onDestroy() {
-    	// TODO Auto-generated method stub
-    	super.onDestroy();
-    }
+   
 }

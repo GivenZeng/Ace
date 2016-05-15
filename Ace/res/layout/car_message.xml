@@ -24,6 +24,7 @@
         android:layout_width="300px"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:text="6565"
         ></EditText>
   </LinearLayout>  
    
@@ -42,6 +43,7 @@
           android:textSize="30px"
         android:layout_width="300px"
         android:layout_height="wrap_content"
+        android:text="2008-02-03"
         ></EditText>
 </LinearLayout>
 
@@ -60,6 +62,7 @@
           android:textSize="30px"
         android:layout_width="300px"
         android:layout_height="wrap_content"
+        android:text="2008-02-04"
         ></EditText>
 </LinearLayout>
 

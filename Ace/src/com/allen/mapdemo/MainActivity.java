@@ -1,11 +1,16 @@
 package com.allen.mapdemo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.allen.Util.DrawRectangleUtil;
 import com.allen.Util.GetCarNumFromOneSpaceUtil;
+import com.allen.Util.GetTrafficStreamFromTwoSpaceUtil;
 import com.allen.Util.TrafficPathUtil;
 import com.allen.arguments.Arguments;
+import com.allen.handler.MyDialogHandler;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapPoi;
@@ -16,6 +21,7 @@ import com.baidu.mapapi.model.LatLng;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -26,7 +32,10 @@ public class MainActivity extends Activity {
 	boolean isShowingCarPath = false;
    public MyDialogHandler myHandler=new MyDialogHandler(MainActivity.this);
 	String[] arguments = new String[10];
-   public boolean isShowingRectangle=false;
+	//public List<String> configuras=new ArrayList<String>();
+	public Map<String, String> hashmap=new HashMap<String, String>();
+   public boolean hasCheckCarnumFromOneSpace=false;
+   public boolean hasCheckCarnumBetweenTwoSpace=false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,20 +96,34 @@ public class MainActivity extends Activity {
 			break;
 			////////////////////////////////////////////////////////////////////////////////////
 		case R.id.carNum:
-			getTimeAndLocationRangeInOneSpace();
-			if(isShowingRectangle)
+			if(hasCheckCarnumFromOneSpace)
 			{
 				item.setTitle("车数查询");
-				isShowingRectangle=false;
+				hasCheckCarnumFromOneSpace=false;
 				DrawRectangleUtil.cancelRectangle();
 			}
 			else{
+				getTimeAndLocationRangeInOneSpace();
 				item.setTitle("查询完成");
-				//isShowingRectangle=true;
+				hasCheckCarnumFromOneSpace=true;
 			}
 			break;
 			
-		case R.id.trafficStream:
+		case R.id.trafficStreamOneSpace:
+			break;
+		case R.id.trafficStreamTwoSpace:
+			if(hasCheckCarnumBetweenTwoSpace)
+			{
+				item.setTitle("车流查询（二区域）");
+				hasCheckCarnumBetweenTwoSpace=false;
+				DrawRectangleUtil.cancelRectangle();
+			}
+			else
+			{
+				hasCheckCarnumBetweenTwoSpace=true;
+				getTimeAndLocationRangeInTwoSpace();
+				item.setTitle("查询完成");
+			}
 			break;
 
 		case R.id.normallMode:
@@ -129,8 +152,11 @@ public class MainActivity extends Activity {
 		Intent intent =new Intent(MainActivity.this,GetTimeRangeFromOneSpaceAty.class);
 		startActivityForResult(intent, Arguments.GET_TIME_AND_RANGE_FROM_ONE_SPACE);
 	}
-
-	//
+	private void getTimeAndLocationRangeInTwoSpace() {
+		// TODO Auto-generated method stub
+		Intent intent =new Intent(MainActivity.this,GetTimeRangeFromTwoSpaceAty.class);
+		startActivityForResult(intent, Arguments.GET_TIME_RANGE_FROM_TWO_SPACE);
+	}
 	public void drawPath() // 在地图上画轨迹：首先用户输入车号和时间，然后向客户端发送请求获取数据，画线
 	{
 		getCarNumAndTime();
@@ -188,10 +214,30 @@ public class MainActivity extends Activity {
 			String[] latlngs=new String[]{arguments[2],arguments[4],arguments[3],arguments[5]};
 			if(DrawRectangleUtil.drawRectangle(map, latlngs))
 			{
-				isShowingRectangle=true;
+				hasCheckCarnumFromOneSpace=true;
 			}
-			
+//			MenuItem item = (MenuItem) findViewById(R.id.carNum);//使用会出错
+//			item.setTitle("查询完成");
 			GetCarNumFromOneSpaceUtil.getCarNumBySocket(MainActivity.this, arguments);
+		}
+		if(resultCode==Arguments.GET_TIME_RANGE_FROM_TWO_SPACE)
+		{
+			int i=0;
+			Bundle bundle=data.getExtras();
+			hashmap.put(Arguments.firstTime, bundle.getString(Arguments.firstTime));
+			hashmap.put(Arguments.secondTime, bundle.getString(Arguments.secondTime));
+			
+			hashmap.put(Arguments.firstPlaceFirstLatitude,bundle.getString(Arguments.firstPlaceFirstLatitude));
+			hashmap.put(Arguments.firstPlaceSceondLatitude,bundle.getString(Arguments.firstPlaceSceondLatitude));
+			hashmap.put(Arguments.firstPlaceFirstLongitude, bundle.getString(Arguments.firstPlaceFirstLongitude));
+			hashmap.put(Arguments.firstPlaceSecondLongitude,bundle.getString(Arguments.firstPlaceSecondLongitude));
+			
+			hashmap.put(Arguments.secondPlaceFirstLatitude, bundle.getString(Arguments.secondPlaceFirstLatitude));
+			hashmap.put(Arguments.secondPlaceSceondLatitude, bundle.getString(Arguments.secondPlaceSceondLatitude));
+			hashmap.put(Arguments.secondPlaceFirstLongitude,bundle.getString(Arguments.secondPlaceFirstLongitude) );
+			hashmap.put(Arguments.secondPlaceSecondLongitude,bundle.getString(Arguments.secondPlaceSecondLongitude));
+			Log.i("hashmap",hashmap.toString());
+			Map<String, String> map=GetTrafficStreamFromTwoSpaceUtil.getTrafficStreamFromTwoSpace(hashmap);
 		}
 	}
 }

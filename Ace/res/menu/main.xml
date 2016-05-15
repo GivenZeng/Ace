@@ -14,10 +14,16 @@
         android:title="车数查询"/>
   
     <item
-        android:id="@+id/trafficStream"
+        android:id="@+id/trafficStreamOneSpace"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="车流查询"/>
+        android:title="车流查询(一区域)"/>
+    
+     <item
+        android:id="@+id/trafficStreamTwoSpace"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="车流查询(二区域)"/>
     
   <item android:id="@+id/modeItems"
       android:title="模式选择" 

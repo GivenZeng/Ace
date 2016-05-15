@@ -26,8 +26,8 @@ import android.widget.Toast;
 public class GetCarNumFromOneSpaceUtil {
      public static void getCarNumBySocket(final Context context,String[] arguments)
      {
-    	  final String firstTime=arguments[0];
-    	  final String lastTime=arguments[1];
+    	    final String firstTime=arguments[0];
+    	    final String lastTime=arguments[1];
     		final String firstPointLatitude=arguments[2];
     		final String secondPointLatitude=arguments[3];
     		final String firstPointLongitude=arguments[4];
@@ -51,7 +51,7 @@ public class GetCarNumFromOneSpaceUtil {
          		
          		try {
 					Socket socket=new Socket(address,8080);
-					socket.setSoTimeout(30000);
+					socket.setSoTimeout(3000);
 					BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 					PrintWriter writer = new PrintWriter(
 							new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);

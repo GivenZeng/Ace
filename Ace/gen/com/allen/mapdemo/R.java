@@ -31,9 +31,9 @@ public final class R {
     }
     public static final class id {
         public static final int bmapView=0x7f080000;
-        public static final int carNum=0x7f08000e;
+        public static final int carNum=0x7f080019;
         public static final int carNumEditor=0x7f080001;
-        public static final int carPath=0x7f08000d;
+        public static final int carPath=0x7f080018;
         public static final int carTimeFirstEidtor=0x7f080002;
         public static final int carTimeSecondEidtor=0x7f080003;
         public static final int get_one_square_first_latitude_editor=0x7f080007;
@@ -43,21 +43,34 @@ public final class R {
         public static final int get_one_square_second_latitude_editor=0x7f080008;
         public static final int get_one_square_second_longitude_editor=0x7f08000a;
         public static final int get_one_square_sureBtn=0x7f08000b;
-        public static final int mapMode=0x7f080011;
-        public static final int modeItems=0x7f080010;
-        public static final int normallMode=0x7f080012;
+        public static final int get_time_range_from_two_space_first_place_firstlatitude=0x7f08000e;
+        public static final int get_time_range_from_two_space_first_place_firstlongitude=0x7f080010;
+        public static final int get_time_range_from_two_space_first_place_secondlatitude=0x7f08000f;
+        public static final int get_time_range_from_two_space_first_place_secondlongitude=0x7f080011;
+        public static final int get_time_range_from_two_space_firsttime=0x7f08000c;
+        public static final int get_time_range_from_two_space_lasttime=0x7f08000d;
+        public static final int get_time_range_from_two_space_second_place_firstlatitude=0x7f080012;
+        public static final int get_time_range_from_two_space_second_place_firstlongitude=0x7f080014;
+        public static final int get_time_range_from_two_space_second_place_secondlatitude=0x7f080013;
+        public static final int get_time_range_from_two_space_second_place_secondlongitude=0x7f080015;
+        public static final int get_time_range_from_two_space_sure_btn=0x7f080016;
+        public static final int mapMode=0x7f08001d;
+        public static final int modeItems=0x7f08001c;
+        public static final int normallMode=0x7f08001e;
         public static final int okBtn=0x7f080004;
-        public static final int satelliteMode=0x7f080014;
-        public static final int trafficMode=0x7f080013;
-        public static final int trafficStream=0x7f08000f;
-        public static final int trafficStreamBackItem=0x7f080015;
-        public static final int trafficStreamGraph=0x7f08000c;
+        public static final int satelliteMode=0x7f080020;
+        public static final int trafficMode=0x7f08001f;
+        public static final int trafficStreamBackItem=0x7f080021;
+        public static final int trafficStreamGraph=0x7f080017;
+        public static final int trafficStreamOneSpace=0x7f08001a;
+        public static final int trafficStreamTwoSpace=0x7f08001b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int car_message=0x7f030001;
-        public static final int get_time_range_from_one_space_layout=0x7f030002;
-        public static final int traffic_stream=0x7f030003;
+        public static final int get_time_range_from_one_spacexml=0x7f030002;
+        public static final int get_time_range_from_two_space=0x7f030003;
+        public static final int traffic_stream=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f070000;

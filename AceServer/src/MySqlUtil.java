@@ -1,6 +1,11 @@
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import com.mysql.jdbc.Statement;
 
@@ -12,6 +17,9 @@ public class MySqlUtil {
 	private static final String longitude="longitude";
 	private static final String between=" between ";
 	private static final String and=" and ";
+	private static final String select_count="select count(distinct first.carnum) from (select carnum from data where time between '";
+	private static final String as_first=" ) as first, (select carnum from data where time between '";
+	private static final String as_second=" ) as second where first.carnum=second.carnum";
 	
 	public static void getRoad(Statement statement, String[] carMessageAndTime, PrintWriter writer) {
 		// TODO Auto-generated method stub
@@ -54,15 +62,6 @@ public class MySqlUtil {
 	        ResultSet results;
 	        try {
 				results=statement.executeQuery(sql);
-//				while(results.next())
-//				{
-//					writer.println(String.valueOf(results.getInt(1)));
-//					
-//				}
-				// int rowNum=results.getRow(); //指针在最后可以通过这个方法获取所有记录数 
-				 //results.last();  //将指针移动到最后行  
-				// System.out.println("一共有"+rowNum+"行");
-				//System.out.println(results);
 				 results.first();
 				 int carnum=results.getInt("carnum");
 				System.out.println(String.valueOf(carnum));
@@ -76,13 +75,63 @@ public class MySqlUtil {
 				e.printStackTrace();
 			}
 	}
+        
 
 
 
-
-	public static void getCarnumBetweenTwoSpace(Statement statement, String[] carMessageAndTime, PrintWriter out) {
+	public static void getCarnumBetweenTwoSpace(Statement statement, String[] carMessageAndTime, PrintWriter writer) {
 		// TODO Auto-generated method stub
+		List<String> times=new ArrayList<String>();
+		DateFormat df=DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM);
+		Date firstDate=null,secondDate=null,tempDate=null;
+		try {
+			 firstDate=df.parse(carMessageAndTime[0]);
+			 secondDate=df.parse(carMessageAndTime[1]);
+			 tempDate=df.parse(carMessageAndTime[0]);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String frag1="' and latitude between "
+				+carMessageAndTime[2]+" and "+carMessageAndTime[3]+" and longitude between "
+				+carMessageAndTime[4]+" and "+carMessageAndTime[5]
+			    +as_first;
+		String frag2="' and latitude between "
+			    +carMessageAndTime[6]+" and "+carMessageAndTime[7]+" and longitude between "
+			    +carMessageAndTime[8]+" and "+carMessageAndTime[9]
+			    +as_second;
 		
+	
+//		String sql=select_count
+//				+carMessageAndTime[0]+"' and '"+carMessageAndTime[1]+"' and latitude between "
+//				+carMessageAndTime[2]+" and "+carMessageAndTime[3]+" and longitude between "
+//				+carMessageAndTime[4]+" and "+carMessageAndTime[5]
+//			    +as_first
+//			    +carMessageAndTime[0]+"' and '"+carMessageAndTime[1]+"' and latitude between "
+//			    +carMessageAndTime[6]+" and "+carMessageAndTime[7]+" and longitude between "
+//			    +carMessageAndTime[8]+" and "+carMessageAndTime[9]
+//			    +as_second;
+		ResultSet results;
+		while(firstDate.before(secondDate))
+		{
+			tempDate.setHours(tempDate.getHours()+1);
+			String time=df.format(firstDate)+"' and '"+df.format(tempDate);
+			String sql=select_count+time+frag1+time+frag2;
+			try {
+				System.out.println(sql);
+				results = statement.executeQuery(sql);
+				results.first();
+				writer.println("first time");
+				writer.println(results.getInt("count(distinct first.carnum)"));
+				System.out.println("first time  "+String.valueOf(results.getInt("count(distinct first.carnum)")));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			firstDate.setHours(firstDate.getHours()+1);;
+		}
+		writer.println("end");
+		System.out.println("end");
 	}
 
 

@@ -20,6 +20,8 @@ public class DrawRectangleUtil {
 	   public static BaiduMap map;
        public static boolean drawRectangle(BaiduMap baidumap,LatLng a,LatLng b )
        {   
+    	   cancelRectangle();
+    	   Log.i("ace", "start draw rectangle");
     	   map=baidumap;
     	   List<Integer> colors = new ArrayList<Integer>();
     	   colors.add(Integer.valueOf(Color.GREEN));
@@ -58,6 +60,7 @@ public class DrawRectangleUtil {
        
        public static boolean drawRectangle(BaiduMap map,String[] gpsPoints)
        {
+    	   Log.i("ace", "start change strings to latlngs");
     	   double a=Double.parseDouble(gpsPoints[0]);
     	   double b=Double.parseDouble(gpsPoints[1]);
     	   double c=Double.parseDouble(gpsPoints[2]);
@@ -71,12 +74,18 @@ public class DrawRectangleUtil {
 			e=converter.convert();
 			converter.coord(f);
 			f=converter.convert();
+			 Log.i("ace", "finish change strings to latlngs");
     	   return drawRectangle(map,e,f );
        }
        
        public static void cancelRectangle()
        {
-    		mPolyline.remove();
-    		mPolyline = null;
+    		if(mPolyline!=null)
+    		{
+    			mPolyline.remove();
+        		mPolyline = null;
+        		ooPolyline =null;
+        		Log.i("ace","succeed remove the rectangle");
+    		}
        }
 }

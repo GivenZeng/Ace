@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:gravity="center_horizontal"
+    android:background="#ccc">
+
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="起始时间："
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_firsttime"
+           android:layout_width="300dp"
+           android:layout_height="wrap_content"
+           android:hint="y-m-d h-m-s"
+           android:text="2008-02-03 15:00:00"
+           />
+    </LinearLayout>
+    
+     <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="结束时间："
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_lasttime"
+           android:layout_width="300dp"
+           android:layout_height="wrap_content"
+           android:hint="y-m-d h-m-s"
+           android:text="2008-02-03 18:00:00"
+           />
+    </LinearLayout>
+    
+     <View android:layout_width="match_parent"
+         android:layout_height="2dp"
+         android:background="#333"/>
+     
+     <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="纬范围一："
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_first_place_firstlatitude"
+           android:layout_width="145dp"
+           android:layout_height="wrap_content"
+           android:hint="latitude"
+           android:text="39.32"
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_first_place_secondlatitude"
+           android:layout_width="145dp"
+           android:layout_height="wrap_content"
+           android:hint="latitude"
+           android:text="39.5"
+           />
+    </LinearLayout>
+    
+          <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="经范围一："
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_first_place_firstlongitude"
+           android:layout_width="145dp"
+           android:layout_height="wrap_content"
+           android:hint="latitude"
+           android:text="115.90"
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_first_place_secondlongitude"
+           android:layout_width="145dp"
+           android:layout_height="wrap_content"
+           android:hint="latitude"
+           android:text="115.95"
+           />
+    </LinearLayout>
+    
+           <View android:layout_width="match_parent"
+         android:layout_height="2dp"
+         android:background="#333"/>
+           
+               <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="纬范围二："
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_second_place_firstlatitude"
+           android:layout_width="145dp"
+           android:layout_height="wrap_content"
+           android:hint="latitude"
+           android:text="39.5"
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_second_place_secondlatitude"
+           android:layout_width="145dp"
+           android:layout_height="wrap_content"
+           android:hint="latitude"
+           android:text="39.7"
+           />
+    </LinearLayout>
+    
+               
+                         <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="经范围二："
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_second_place_firstlongitude"
+           android:layout_width="145dp"
+           android:layout_height="wrap_content"
+           android:hint="latitude"
+           android:text="115.95"
+           />
+       <EditText android:id="@+id/get_time_range_from_two_space_second_place_secondlongitude"
+           android:layout_width="145dp"
+           android:layout_height="wrap_content"
+           android:hint="latitude"
+           android:text="116.1"
+           />
+    </LinearLayout>
+        <View android:layout_width="match_parent"
+         android:layout_height="2dp"
+         android:background="#333"/>
+          <Button android:id="@+id/get_time_range_from_two_space_sure_btn"
+              android:layout_width="80dp"
+              android:layout_height="wrap_content"
+              android:text="确定"
+              ></Button>
+     
+</LinearLayout>
