@@ -1,8 +1,14 @@
 package com.allen.mapdemo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.allen.arguments.Arguments;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -20,22 +26,22 @@ public class TrafficStreamActivity extends Activity {
     
     private void initViews() {
 		// TODO Auto-generated method stub
+    	Log.i("trafficstream", " start init in trafficstreamactivity");
     	trafficStreamGraph=(TrafficStreamGraph) findViewById(R.id.trafficStreamGraph);
-//    	float[] points={0,50,150,300,500,400,500,450,100};
-//        trafficStreamGraph.setPoints(points);
+    	Bundle bundle=getIntent().getExtras();
+    	ArrayList<CharSequence> timeAndCarnum=bundle.getCharSequenceArrayList(Arguments.timeAndCarnum);
+    	List<String> list=new ArrayList<String>();
+    	int length=timeAndCarnum.size();
+    	Log.i("trafficstream", " start change charsequence to string in trafficstreamactivity");
+    	for(int i=0;i<length;i++)
+    	{
+    		list.add(timeAndCarnum.get(i).toString());
+    	}
+    	Log.i("trafficstream","trafficstream "+"finish change charsequence to string");
+    	trafficStreamGraph.setPoints(list);
 	}
 
-    //获取数据后要调用
-    public void setPoints(float[]points)
-    {
-    	trafficStreamGraph.setPoints(points);
-    }
-    public void request(String[] messgage)
-    {
-    	//使用socket
-    	float[] carNums=null;
-        trafficStreamGraph.setPoints(carNums);
-    }
+ 
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	// TODO Auto-generated method stub

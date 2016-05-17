@@ -10,7 +10,7 @@ import com.allen.Util.GetCarNumFromOneSpaceUtil;
 import com.allen.Util.GetTrafficStreamFromTwoSpaceUtil;
 import com.allen.Util.TrafficPathUtil;
 import com.allen.arguments.Arguments;
-import com.allen.handler.MyDialogHandler;
+import com.allen.handler.MyHandler;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapPoi;
@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 	MapView mMapView = null;
 	BaiduMap map = null;
 	boolean isShowingCarPath = false;
-   public MyDialogHandler myHandler=new MyDialogHandler(MainActivity.this);
+   public MyHandler myHandler=new MyHandler(MainActivity.this);
 	String[] arguments = new String[10];
 	//public List<String> configuras=new ArrayList<String>();
 	public Map<String, String> hashmap=new HashMap<String, String>();
@@ -176,7 +176,7 @@ public class MainActivity extends Activity {
 		startActivityForResult(intent, Arguments.GET_CARNUM_AND_TIME);
 	}
 
-    public MyDialogHandler getMyHandler()
+    public MyHandler getMyHandler()
     {
     	return myHandler;
     }
@@ -236,8 +236,8 @@ public class MainActivity extends Activity {
 			hashmap.put(Arguments.secondPlaceSceondLatitude, bundle.getString(Arguments.secondPlaceSceondLatitude));
 			hashmap.put(Arguments.secondPlaceFirstLongitude,bundle.getString(Arguments.secondPlaceFirstLongitude) );
 			hashmap.put(Arguments.secondPlaceSecondLongitude,bundle.getString(Arguments.secondPlaceSecondLongitude));
-			Log.i("hashmap",hashmap.toString());
-			Map<String, String> map=GetTrafficStreamFromTwoSpaceUtil.getTrafficStreamFromTwoSpace(hashmap);
+			Log.i("hashmap","hash"+hashmap.toString());
+			GetTrafficStreamFromTwoSpaceUtil.getTrafficStreamFromTwoSpace(MainActivity.this,hashmap);
 		}
 	}
 }

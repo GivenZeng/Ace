@@ -9,19 +9,26 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.allen.arguments.Arguments;
+import com.allen.mapdemo.MainActivity;
+import com.allen.mapdemo.TrafficStreamActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 
 public class GetTrafficStreamFromTwoSpaceUtil {
-      public static Map<String, String> map=null;
-      public static  Map<String, String> getTrafficStreamFromTwoSpace(final Map<String, String> hashmap)
+      public static ArrayList<CharSequence> list=null;
+      public static  List<CharSequence> getTrafficStreamFromTwoSpace(final Context context,final Map<String, String> hashmap)
       {
-    	  map=new HashMap<String, String>();
+    	  list=new ArrayList<CharSequence>();
     	  new Thread()
     	  {
     		  @Override
@@ -56,30 +63,38 @@ public class GetTrafficStreamFromTwoSpaceUtil {
 					writer.println("end");
 					while(true)
 					{
-						String time=reader.readLine();
+						String time=reader.readLine();//Èç7£¬8£¬9
 						if(time.equals("end"))
 							break;
 						
 						else 
 						{
 							String num=reader.readLine();
-							map.put(time,num);
-							Log.i("traffic stream",time+"  "+num);
+							list.add(time);
+							list.add(num);
+							//map.put(time,num);
+							Log.i("trafficstream","trafficstream "+time+"h  "+num);
 						}
 					}
+					Message message=Message.obtain();
+					Bundle bundle=new Bundle();
+					bundle.putCharSequenceArrayList(Arguments.timeAndCarnum, list);
+					message.what=Arguments.SHOW_TRAFFIC_STREAM_BY_HANDLER;
+					message.setData(bundle);
+					((MainActivity)context).getMyHandler().sendMessage(message);
+					Log.i("traffic stream ", "trafficstream"+"finish send message to handler");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-					
-    			super.run();
+				
     		}
     	  }.start();
-    	  return getMap();
+    	  return getList();
       }
       
-      public static Map<String, String> getMap()
+      public static List<CharSequence> getList()
       {
-    	  return map;
+    	  return list;
       }
 }

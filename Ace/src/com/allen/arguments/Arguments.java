@@ -11,6 +11,7 @@ public class Arguments {
 	public static final int GET_CARNUM_AND_TIME=7;
 	public static final int show_dialog_by_handler=8;
 	public static final int GET_TIME_RANGE_FROM_TWO_SPACE=9;
+	public static final int SHOW_TRAFFIC_STREAM_BY_HANDLER=10;
 	
 	public static final String FINISH="finish";
 	public static final String firstTime="firstTime";
@@ -23,4 +24,6 @@ public class Arguments {
 	public static final String secondPlaceSceondLatitude="secondPlaceSecondLatitude";
 	public static final String secondPlaceFirstLongitude="secondPlaceFirstLongitude";
 	public static final String secondPlaceSecondLongitude="secondPlaceSecondLongitude";
+	
+	public static final String timeAndCarnum="timeAndCarnum";
 }

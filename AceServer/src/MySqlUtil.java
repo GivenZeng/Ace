@@ -100,17 +100,7 @@ public class MySqlUtil {
 			    +carMessageAndTime[6]+" and "+carMessageAndTime[7]+" and longitude between "
 			    +carMessageAndTime[8]+" and "+carMessageAndTime[9]
 			    +as_second;
-		
-	
-//		String sql=select_count
-//				+carMessageAndTime[0]+"' and '"+carMessageAndTime[1]+"' and latitude between "
-//				+carMessageAndTime[2]+" and "+carMessageAndTime[3]+" and longitude between "
-//				+carMessageAndTime[4]+" and "+carMessageAndTime[5]
-//			    +as_first
-//			    +carMessageAndTime[0]+"' and '"+carMessageAndTime[1]+"' and latitude between "
-//			    +carMessageAndTime[6]+" and "+carMessageAndTime[7]+" and longitude between "
-//			    +carMessageAndTime[8]+" and "+carMessageAndTime[9]
-//			    +as_second;
+
 		ResultSet results;
 		while(firstDate.before(secondDate))
 		{
@@ -121,9 +111,9 @@ public class MySqlUtil {
 				System.out.println(sql);
 				results = statement.executeQuery(sql);
 				results.first();
-				writer.println("first time");
+				writer.println(String.valueOf(firstDate.getHours()));
 				writer.println(results.getInt("count(distinct first.carnum)"));
-				System.out.println("first time  "+String.valueOf(results.getInt("count(distinct first.carnum)")));
+				System.out.println(firstDate.getHours()+"H    "+String.valueOf(results.getInt("count(distinct first.carnum)")));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

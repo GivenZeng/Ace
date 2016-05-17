@@ -68,7 +68,7 @@ public final class R {
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int car_message=0x7f030001;
-        public static final int get_time_range_from_one_spacexml=0x7f030002;
+        public static final int get_time_range_from_one_space=0x7f030002;
         public static final int get_time_range_from_two_space=0x7f030003;
         public static final int traffic_stream=0x7f030004;
     }

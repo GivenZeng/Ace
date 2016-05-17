@@ -20,7 +20,7 @@ public class GetTimeRangeFromOneSpaceAty extends Activity {
         protected void onCreate(Bundle savedInstanceState) {
         	// TODO Auto-generated method stub
         	super.onCreate(savedInstanceState);
-        	setContentView(R.layout.get_time_range_from_one_spacexml);
+        	setContentView(R.layout.get_time_range_from_one_space);
         	initViews();
         }
          
